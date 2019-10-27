@@ -8,6 +8,12 @@
 思路：先按照设备编号分组，再按照周期分组。
 注意：使用 Collectors.groupingBy 的时候， 分组属性千万不能为 null。遇到这种情况，可以做类型转换，或者使用 filter 将 null 过滤掉。
 
+
+
+![项目结构说明](README.assets/项目结构说明.png)
+
+
+
 ### 1、原始数据结构
 
 ```json
