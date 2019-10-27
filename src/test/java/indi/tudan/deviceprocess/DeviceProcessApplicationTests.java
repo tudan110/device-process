@@ -17,63 +17,15 @@ class DeviceProcessApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
     @Test
     void testWithMap() {
 
-        // 1、原始数据
-        JSONArray jsonArray = JSONArray.parseArray("[{\n" +
-                "\t\"machineCode\": \"testdelete001\",\n" +
-                "\t\"machineName\": \"设备000011\",\n" +
-                "\t\"maintainInterval\": 0,\n" +
-                "\t\"dateList\": [1568545050000]\n" +
-                "}, {\n" +
-                "\t\"machineCode\": \"testdelete001\",\n" +
-                "\t\"machineName\": \"设备000011\",\n" +
-                "\t\"maintainInterval\": 1,\n" +
-                "\t\"dateList\": [1568545070000]\n" +
-                "}, {\n" +
-                "\t\"machineCode\": \"testdelete001\",\n" +
-                "\t\"machineName\": \"设备000011\",\n" +
-                "\t\"maintainInterval\": 1,\n" +
-                "\t\"dateList\": [1568545060000]\n" +
-                "}, {\n" +
-                "\t\"machineCode\": \"shebeibangdtest001\",\n" +
-                "\t\"machineName\": \"设备绑定测试001\",\n" +
-                "\t\"maintainInterval\": 0,\n" +
-                "\t\"dateList\": [1568279597000]\n" +
-                "}, {\n" +
-                "\t\"machineCode\": \"SDL-001\",\n" +
-                "\t\"machineName\": \"离心机001\",\n" +
-                "\t\"maintainInterval\": 0,\n" +
-                "\t\"dateList\": [1571824443000]\n" +
-                "}, {\n" +
-                "\t\"machineCode\": \"HT-001\",\n" +
-                "\t\"machineName\": \"选籽机001\",\n" +
-                "\t\"maintainInterval\": 0,\n" +
-                "\t\"dateList\": [1571824443000, 1571846401000]\n" +
-                "}, {\n" +
-                "\t\"machineCode\": \"FZJ-001\",\n" +
-                "\t\"machineName\": \"纺织机001\",\n" +
-                "\t\"maintainInterval\": null,\n" +
-                "\t\"dateList\": [null]\n" +
-                "}, {\n" +
-                "\t\"machineCode\": \"2\",\n" +
-                "\t\"machineName\": \"阿诗丹顿\",\n" +
-                "\t\"maintainInterval\": 0,\n" +
-                "\t\"dateList\": [1571397603000, 1571825190000, 1571882705000]\n" +
-                "}, {\n" +
-                "\t\"machineCode\": \"3\",\n" +
-                "\t\"machineName\": \"阿诗丹顿\",\n" +
-                "\t\"maintainInterval\": 1,\n" +
-                "\t\"dateList\": [1571193334000]\n" +
-                "}]");
-        System.out.println(jsonArray.toJSONString());
-
-        // 2、组装原始数据，用 HashMap
+        // 用 HashMap 组装原始数据
         List<Map<String, Object>> list = new ArrayList<>();
-        for (Object o : jsonArray) {
+        for (Object o : getDataString()) {
             JSONObject json = (JSONObject) o;
             Map<String, Object> itemMap = new HashMap<>();
             itemMap.put("machineCode", json.getString("machineCode"));
@@ -87,13 +39,23 @@ class DeviceProcessApplicationTests {
             list.add(itemMap);
         }
 
-        // 3、打印输出结果
+        // 打印输出结果
         System.out.println(DeviceProcess.processWithMap(DeviceProcess.filterNullWithMap(list)));
     }
 
     @Test
     void testWithJson() {
 
+        // 打印输出结果
+        System.out.println(
+                DeviceProcess.processWithJson(
+                        JSONArray.parseArray(JSON.toJSONString(
+                                DeviceProcess.filterNullWithJson(getDataString())
+                        ))));
+
+    }
+
+    private JSONArray getDataString() {
         // 1、原始数据
         JSONArray jsonArray = JSONArray.parseArray("[{\n" +
                 "\t\"machineCode\": \"testdelete001\",\n" +
@@ -142,14 +104,7 @@ class DeviceProcessApplicationTests {
                 "\t\"dateList\": [1571193334000]\n" +
                 "}]");
         System.out.println(jsonArray.toJSONString());
-
-        // 3、打印输出结果
-        System.out.println(
-                DeviceProcess.processWithJson(
-                        JSONArray.parseArray(JSON.toJSONString(
-                                DeviceProcess.filterNullWithJson(jsonArray)
-                        ))));
-
+        return jsonArray;
     }
 
 }
