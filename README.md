@@ -101,13 +101,6 @@
 	}],
 	"machineName": "设备绑定测试001"
 }, {
-	"machineCode": "FZJ-001",
-	"intervalGroup": [{
-		"maintainInterval": null,
-		"dateList": [null]
-	}],
-	"machineName": "纺织机001"
-}, {
 	"machineCode": "SDL-001",
 	"intervalGroup": [{
 		"maintainInterval": 0,
