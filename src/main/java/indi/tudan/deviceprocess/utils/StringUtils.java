@@ -1,6 +1,8 @@
 package indi.tudan.deviceprocess.utils;
 
 /**
+ * 字符串处理工具类
+ *
  * @author wangtan
  * @date 2019-10-27 13:43:20
  * @since 1.0
@@ -22,7 +24,11 @@ public class StringUtils {
      */
     public static String getStr(Object object) {
         if (isNotBlank(object)) {
-            return (String) object;
+            if (object instanceof Integer) {
+                return String.valueOf(object);
+            } else {
+                return (String) object;
+            }
         } else {
             return "";
         }

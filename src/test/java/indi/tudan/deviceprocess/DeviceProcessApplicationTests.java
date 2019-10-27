@@ -1,6 +1,5 @@
 package indi.tudan.deviceprocess;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import indi.tudan.deviceprocess.core.DeviceProcess;
@@ -40,7 +39,10 @@ class DeviceProcessApplicationTests {
         }
 
         // 打印输出结果
-        System.out.println(DeviceProcess.processWithMap(DeviceProcess.filterNullWithMap(list)));
+        System.out.println(
+                DeviceProcess.processWithMap(
+                        DeviceProcess.filterNullWithMap(list)
+                ));
     }
 
     @Test
@@ -49,9 +51,8 @@ class DeviceProcessApplicationTests {
         // 打印输出结果
         System.out.println(
                 DeviceProcess.processWithJson(
-                        JSONArray.parseArray(JSON.toJSONString(
-                                DeviceProcess.filterNullWithJson(getDataString())
-                        ))));
+                        DeviceProcess.filterNullWithJson(getDataString())
+                ));
 
     }
 

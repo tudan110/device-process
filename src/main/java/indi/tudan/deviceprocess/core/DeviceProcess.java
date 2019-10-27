@@ -1,5 +1,6 @@
 package indi.tudan.deviceprocess.core;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import indi.tudan.deviceprocess.utils.StringUtils;
@@ -35,8 +36,8 @@ public class DeviceProcess {
     public static List<Map<String, Object>> filterNullWithMap(List<Map<String, Object>> list) {
         return list.stream().filter(item ->
                 StringUtils.isNotBlank(StringUtils.getStr(item.get("machineCode")))
-                && StringUtils.isNotBlank(StringUtils.getStr(item.get("maintainInterval")))
-                && !"null".equals(StringUtils.getStr(item.get("maintainInterval")))
+                        && StringUtils.isNotBlank(StringUtils.getStr(item.get("maintainInterval")))
+                        && !"null".equals(StringUtils.getStr(item.get("maintainInterval")))
         ).collect(Collectors.toList());
     }
 
@@ -184,12 +185,12 @@ public class DeviceProcess {
      * @return 去空后的列表
      * @date 2019-10-27 17:36:52
      */
-    public static List<Object> filterNullWithJson(JSONArray jsonArray) {
-        return jsonArray.stream().filter(item ->
+    public static JSONArray filterNullWithJson(JSONArray jsonArray) {
+        return JSONArray.parseArray(JSON.toJSONString(jsonArray.stream().filter(item ->
                 StringUtils.isNotBlank(((JSONObject) item).getString("machineCode"))
                         && StringUtils.isNotBlank(((JSONObject) item).getString("maintainInterval"))
                         && !"null".equals(((JSONObject) item).getString("maintainInterval"))
-        ).collect(Collectors.toList());
+        ).collect(Collectors.toList())));
     }
 
     /**
