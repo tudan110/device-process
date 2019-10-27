@@ -6,7 +6,7 @@
 
 用于设备数据加工。
 思路：先按照设备编号分组，再按照周期分组。
-注意：使用 Collectors.groupingBy的时候， 分组属性千万不能为 null。遇到这种情况，可以做类型转换，或者使用 filter 将 null 过滤掉。
+注意：使用 Collectors.groupingBy 的时候， 分组属性千万不能为 null。遇到这种情况，可以做类型转换，或者使用 filter 将 null 过滤掉。
 
 ### 1、原始数据结构
 

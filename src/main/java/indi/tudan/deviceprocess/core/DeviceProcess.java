@@ -118,7 +118,7 @@ public class DeviceProcess {
         // 待返回数据
         List<Map<String, Object>> result = new ArrayList<>();
 
-        // XXX 注意：使用 Collectors.groupingBy的时候， 分组属性千万不能为 null
+        // XXX 注意：使用 Collectors.groupingBy 的时候， 分组属性千万不能为 null
         // 按照设备编号分组
         Map<String, List<Map<String, Object>>> deviceGroup = list.stream()
                 .collect(Collectors.groupingBy(item -> StringUtils.getStr(item.get("machineCode"))));
@@ -135,7 +135,7 @@ public class DeviceProcess {
 
             machineList1.forEach(machine -> {
 
-                // XXX 注意：使用 Collectors.groupingBy的时候， 分组属性千万不能为 null
+                // XXX 注意：使用 Collectors.groupingBy 的时候， 分组属性千万不能为 null
                 // 按照周期分组
                 Map<Integer, List<Map<String, Object>>> intervalGroup = machineList1.stream()
                         .collect(Collectors.groupingBy(item -> (int) item.get("maintainInterval")));
@@ -204,7 +204,7 @@ public class DeviceProcess {
         // 待返回数据
         List<JSONObject> result = new ArrayList<>();
 
-        // XXX 注意：使用 Collectors.groupingBy的时候， 分组属性千万不能为 null
+        // XXX 注意：使用 Collectors.groupingBy 的时候， 分组属性千万不能为 null
         // 按照设备编号分组
         Map<String, List<Object>> deviceGroup = jsonArray.stream()
                 .collect(Collectors.groupingBy(item -> StringUtils.getStr(((JSONObject) item).getString("machineCode"))));
@@ -221,7 +221,7 @@ public class DeviceProcess {
 
             machineList1.forEach(machine -> {
 
-                // XXX 注意：使用 Collectors.groupingBy的时候， 分组属性千万不能为 null
+                // XXX 注意：使用 Collectors.groupingBy 的时候， 分组属性千万不能为 null
                 // 按照周期分组
                 Map<Integer, List<Object>> intervalGroup = machineList1.stream()
                         .collect(Collectors.groupingBy(item -> ((JSONObject) item).getInteger("maintainInterval")));
