@@ -2,6 +2,10 @@
 
 用于设备数据分组加工。
 
+处理过程详见 *indi.tudan.deviceprocess.core.DeviceProcess*；测试代码详见 *indi.tudan.deviceprocess.DeviceProcessApplicationTests*。
+
+本示例提供了两种解决方案，processWithMap() 使用 jdk HashMap；processWithJson() 使用 fastjson；若您用了其他的数据对象类，参照修改即可。
+
 @description jdk 1.8 及以上
 
 @author wangtan
