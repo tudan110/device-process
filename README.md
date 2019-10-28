@@ -69,7 +69,7 @@
 	"dateList": [1571397603000, 1571825190000, 1571882705000]
 }, {
 	"machineCode": "3",
-	"machineName": "阿诗丹顿",
+	"machineName": "阿诗丹顿3",
 	"maintainInterval": 1,
 	"dateList": [1571193334000]
 }]
@@ -108,7 +108,7 @@
 		"maintainInterval": 1,
 		"dateList": [1571193334000]
 	}],
-	"machineName": "阿诗丹顿"
+	"machineName": "阿诗丹顿3"
 }, {
 	"machineCode": "shebeibangdtest001",
 	"intervalGroup": [{
