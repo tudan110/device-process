@@ -2,15 +2,17 @@
 
 用于设备数据分组加工。
 
+@description jdk 1.8 及以上
+
 @author wangtan
 
 @date 2019-10-26 17:05:46
 
 @since 1.0
 
-思路：先按照设备编号分组，再按照周期分组。
+思路：先按照设备编号分组，再按照周期分组。**请考虑待分组属性为空的情况**。
 
-注意：使用 Collectors.groupingBy 的时候， 分组属性千万不能为 null。遇到这种情况，可以做类型转换，或者使用 filter 将 null 过滤掉。
+注意：使用 Collectors.groupingBy 的时候， **分组属性千万不能为 null**。遇到这种情况，可以做类型转换，或者使用 filter 将 null 过滤掉。
 
 
 
